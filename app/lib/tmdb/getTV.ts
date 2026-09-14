@@ -4,12 +4,12 @@ import searchTV from "@/app/lib/tmdb/searchTV";
 const baseUrl = "https://api.themoviedb.org/3/tv";
 const posterUrl = "https://image.tmdb.org/t/p";
 
-const TVCardSchema = z.object({
+const TVCard = z.object({
   name: z.string(),
   poster_path: z.string(),
 });
 
-export async function getTVCard(query: string) {
+export async function getTV(query: string) {
   const id = await searchTV(query);
   const url = `${baseUrl}/${id}`;
 
@@ -27,7 +27,7 @@ export async function getTVCard(query: string) {
     }
 
     const rawData = await res.json();
-    const data = TVCardSchema.parse(rawData);
+    const data = TVCard.parse(rawData);
     data.poster_path = `${posterUrl}/original${data.poster_path}`;
 
     return data;

@@ -6,12 +6,10 @@ import {
 
 import { TVs } from "@/app/lib/tmdb/catalogue/tv";
 import TVCard from "@/app/ui/tv-card";
-import { getTVCard } from "@/app/lib/tmdb/getTV";
+import { getTV } from "@/app/lib/tmdb/getTV";
 
 export default async function TVCarousel() {
-  const tvArr = await Promise.all(
-    TVs.map(async (query) => await getTVCard(query)),
-  );
+  const tvArr = await Promise.all(TVs.map(async (query) => await getTV(query)));
 
   if (!tvArr) {
     return <div>Failed to get tvs</div>;

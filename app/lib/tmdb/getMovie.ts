@@ -9,7 +9,7 @@ const MovieSchema = z.object({
   poster_path: z.string(),
 });
 
-export async function getMovieCard(query: string) {
+export async function getMovie(query: string) {
   const id = await searchMovie(query);
   const url = `${baseUrl}/${id}`;
 
