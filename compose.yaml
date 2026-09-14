@@ -33,6 +33,6 @@ services:
   cloudflare:
     image: cloudflare/cloudflared:latest
     container_name: cloudflare-tunnel
-    command: tunnel --no-autupdate run
+    command: tunnel --no-autopdate run
     env_file:
       - ".env.docker"
