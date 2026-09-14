@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Movie } from "@/app/lib/definitions";
+import type { MovieCard } from "@/app/lib/definitions";
 
-export default async function MovieCard({ movie }: { movie: Movie }) {
+export default async function MovieCard({ movie }: { movie: MovieCard }) {
   return (
     <div className="w-36 relative aspect-[2/3]">
       <Image
