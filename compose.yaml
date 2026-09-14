@@ -22,3 +22,17 @@ services:
             - .next/
         - action: rebuild
           path: package.json
+
+  lorndev-prod:
+    image: ghcr.io/shencan03/lorndev:main
+    container_name: lorndev-prod
+    depends_on:
+      cloudflare:
+        condition: service_started
+
+  cloudflare:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflare-tunnel
+    command: tunnel --no-autupdate run
+    env_file:
+      - ".env.docker"
