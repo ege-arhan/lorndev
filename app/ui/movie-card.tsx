@@ -3,7 +3,7 @@ import type { MovieCard } from "@/app/lib/definitions";
 
 export default async function MovieCard({ movie }: { movie: MovieCard }) {
   return (
-    <div className="w-36 relative aspect-[2/3]">
+    <div className="w-24 sm:w-36 relative aspect-[2/3]">
       <Image
         src={movie.poster_path}
         fill={true}
