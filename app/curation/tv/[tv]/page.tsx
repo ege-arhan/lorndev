@@ -2,6 +2,8 @@ import { TVs } from "@/app/lib/tmdb/catalogue/tv";
 import { getTV } from "@/app/lib/tmdb/getTV";
 import Image from "next/image";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return Object.keys(TVs).map((query) => ({
     tv: query,

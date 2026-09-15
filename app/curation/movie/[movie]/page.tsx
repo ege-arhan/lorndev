@@ -3,6 +3,8 @@ import { getMovie } from "@/app/lib/tmdb/getMovie";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return Object.keys(MOVIES).map((query) => ({
     movie: query,
@@ -15,10 +17,10 @@ export default async function Page({
   params: Promise<{ movie: string }>;
 }) {
   const { movie } = await params;
-  const reviewObj = await getMovie(decodeURIComponent(movie), "review");
-  if (!reviewObj) {
+  if (!movie) {
     notFound();
   }
+  const reviewObj = await getMovie(decodeURIComponent(movie), "review");
   return (
     <div className="flex">
       <div className="flex w-36 relative aspect-[2/3]">
