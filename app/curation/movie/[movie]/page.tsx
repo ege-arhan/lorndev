@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
   return Object.keys(MOVIES).map((query) => ({
-    movie: encodeURIComponent(query),
+    movie: query,
   }));
 }
 

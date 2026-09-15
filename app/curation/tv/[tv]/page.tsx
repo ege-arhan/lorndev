@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function generateStaticParams() {
   return Object.keys(TVs).map((query) => ({
-    tv: encodeURIComponent(query),
+    tv: query,
   }));
 }
 
