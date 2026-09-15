@@ -15,7 +15,6 @@ export default async function Page({
 }) {
   const { tv } = await params;
   const reviewObj = await getTV(decodeURIComponent(tv), "review");
-  console.log(decodeURIComponent(tv));
   return (
     <div className="flex">
       <div className="flex w-36 relative aspect-[2/3]">

@@ -35,6 +35,7 @@ export async function getTV(query: string, type: MediaObj) {
     const rawData = await res.json();
     const data = TVCard.parse(rawData);
     data.poster_path = `${posterUrl}/original${data.poster_path}`;
+
     if (type === "card") {
       return data;
     }
