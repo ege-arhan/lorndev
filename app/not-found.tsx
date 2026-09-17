@@ -5,7 +5,7 @@ export default function NotFound() {
     <div>
       <h1>Not Found</h1>
       <p>What you requested doesn&apos;t exist on my web site</p>
-      <Link href={"/curation"}>Return home</Link>
+      <Link href={"/"}>Return home</Link>
     </div>
   );
 }
