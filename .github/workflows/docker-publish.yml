@@ -96,6 +96,6 @@ jobs:
     steps:
       - name: Run redeploy make script
         shell: bash
-        working-directory: /ubuntu/home/lorndev
+        working-directory: /home/ubuntu/lorndev
         run: |
           make redeploy
