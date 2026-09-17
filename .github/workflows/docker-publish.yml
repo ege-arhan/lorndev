@@ -73,8 +73,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          secrets: |
-            "tmdb_token=${{ secrets.TMDB_TOKEN }}"
+          secrets: "tmdb_token=${{ secrets.TMDB_TOKEN }}"
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
@@ -90,3 +89,13 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
+  deploy:
+    needs: build
+    runs-on: [self-hosted]
+
+    steps:
+      - name: Run redeploy make script
+        shell: bash
+        working-directory: /ubuntu/home/lorndev
+        run: |
+          make redeploy
